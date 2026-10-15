@@ -1,0 +1,148 @@
+=== Job 0a: voting smoke ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[voting] 96 cells total, 96 done, 0 fresh
+[voting] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night3/voting_sweep_smoke.csv
+--- OK: python
+=== Job 0b: template fuzz smoke ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[template_fuzz] kinds: ['club', 'coop', 'generic', 'movement', 'party']
+[template_fuzz] club: {'kind': 'club', 'rounds': 100, 'general': 64, 'onboard': 3, 'mandate': 25, 'amend_blocked': 8, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] coop: {'kind': 'coop', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] generic: {'kind': 'generic', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] movement: {'kind': 'movement', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] party: {'kind': 'party', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] ALL TEMPLATES OK
+--- OK: python
+=== Job 0c: ballot fuzz smoke ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[ballot_fuzz] accepted=852 rejected=1148 (all ValueError)
+[ballot_fuzz] HASH DETERMINISM + ROUND-TRIP + TAMPER DETECTION OK
+--- OK: python
+=== Job 0d: stress smoke ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+appended 20000 blocks in 24.2s (827 blocks/s)
+verify() over 20000 blocks: True in 7.9s
+audit_trail() over 20000 blocks in 0.3s
+tamper fuzz: 50/50 caught
+amendment hammer: 200 attempts, 92 rejected; core intact: one_member_one_vote=True, stakes_transferable=False
+ALL STRESS CHECKS PASSED
+--- OK: python
+=== Job 1: voting-rule sweep ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[voting] 960 cells total, 0 done, 960 fresh
+[voting] 100/960 fresh cells done
+[voting] 200/960 fresh cells done
+[voting] 300/960 fresh cells done
+[voting] 400/960 fresh cells done
+[voting] 500/960 fresh cells done
+[voting] 600/960 fresh cells done
+[voting] 700/960 fresh cells done
+[voting] 800/960 fresh cells done
+[voting] 900/960 fresh cells done
+[voting] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night3/voting_sweep.csv
+--- OK: python
+=== Job 2: template fuzz ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[template_fuzz] kinds: ['club', 'coop', 'generic', 'movement', 'party']
+[template_fuzz] club: {'kind': 'club', 'rounds': 100, 'general': 64, 'onboard': 3, 'mandate': 25, 'amend_blocked': 8, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] coop: {'kind': 'coop', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] generic: {'kind': 'generic', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] movement: {'kind': 'movement', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] party: {'kind': 'party', 'rounds': 100, 'general': 59, 'onboard': 3, 'mandate': 27, 'amend_blocked': 11, 'errors': 0, 'chain_len': 100, 'charter_version': 1}
+[template_fuzz] ALL TEMPLATES OK
+--- OK: python
+=== Job 3: ballot fuzz ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[ballot_fuzz] accepted=852 rejected=1148 (all ValueError)
+[ballot_fuzz] HASH DETERMINISM + ROUND-TRIP + TAMPER DETECTION OK
+--- OK: python
+=== Job 4: scale stress ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+appended 500000 blocks in 357.3s (1400 blocks/s)
+verify() over 500000 blocks: True in 147.5s
+audit_trail() over 500000 blocks in 4.0s
+tamper fuzz: 500/500 caught
+amendment hammer: 2000 attempts, 858 rejected; core intact: one_member_one_vote=True, stakes_transferable=False
+ALL STRESS CHECKS PASSED
+--- OK: python
+=== Job 5: confidence intervals ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[ci] apathy cell 50.0/0.2/0.8
+[ci] apathy cell 50.0/0.2/0.95
+[ci] apathy cell 50.0/0.5/0.8
+[ci] apathy cell 50.0/0.5/0.95
+[ci] apathy cell 50.0/0.7/0.8
+[ci] apathy cell 50.0/0.7/0.95
+[ci] apathy cell 66.0/0.2/0.8
+[ci] apathy cell 66.0/0.2/0.95
+[ci] apathy cell 66.0/0.5/0.8
+[ci] apathy cell 66.0/0.5/0.95
+[ci] apathy cell 66.0/0.7/0.8
+[ci] apathy cell 66.0/0.7/0.95
+[ci] apathy cell 75.0/0.2/0.8
+[ci] apathy cell 75.0/0.2/0.95
+[ci] apathy cell 75.0/0.5/0.8
+[ci] apathy cell 75.0/0.5/0.95
+[ci] apathy cell 75.0/0.7/0.8
+[ci] apathy cell 75.0/0.7/0.95
+[ci] wrote apathy table (27 lines)
+[ci] gov cell 0.0/30.0
+[ci] gov cell 0.0/40.0
+[ci] gov cell 0.0/50.0
+[ci] gov cell 0.0/60.0
+[ci] gov cell 0.0/66.0
+[ci] gov cell 0.2/30.0
+[ci] gov cell 0.2/40.0
+[ci] gov cell 0.2/50.0
+[ci] gov cell 0.2/60.0
+[ci] gov cell 0.2/66.0
+[ci] gov cell 0.4/30.0
+[ci] gov cell 0.4/40.0
+[ci] gov cell 0.4/50.0
+[ci] gov cell 0.4/60.0
+[ci] gov cell 0.4/66.0
+[ci] wrote gov table (26 lines)
+[ci] voting cell approval/0.0
+[ci] voting cell approval/0.5
+[ci] voting cell approval/0.8
+[ci] voting cell approval/0.95
+[ci] voting cell binary/0.0
+[ci] voting cell binary/0.5
+[ci] voting cell binary/0.8
+[ci] voting cell binary/0.95
+[ci] voting cell plurality/0.0
+[ci] voting cell plurality/0.5
+[ci] voting cell plurality/0.8
+[ci] voting cell plurality/0.95
+[ci] wrote voting table (21 lines)
+--- OK: python
+=== Job 5: figures ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+[fig] fig1_gov_heatmap.png
+[fig] fig2_payroll_fairness.png
+[fig] fig3_mandate_rotation.png
+[fig] /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/fig5_apathy_quorum.png
+[fig] night2/tab1_quorum_pathologies.md
+[fig] /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night3/fig6_voting_rules.png
+[fig] done
+--- OK: python
+=== Job 5: test gate ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+........................................................................ [ 76%]
+......................                                                   [100%]
+94 passed in 27.71s
+--- OK: python
+=== Job 5: lint gate ===
+warning: `VIRTUAL_ENV=/home/robin/OneDrive/University and such/My Papers/Works in progress/momentum/.venv` does not match the project environment path `.venv` and will be ignored; use `--active` to target the active environment instead
+All checks passed!
+--- OK: ruff
+=== SUMMARY ===
+approval,30,0.95,12,20,0.0,0.15,0.0,0.05,0.0,0.017
+approval,30,0.95,13,20,0.0,0.35,0.0,0.035,0.0,0.017
+approval,30,0.95,14,20,0.0,0.2,0.0,0.06333333333333334,0.0,0.018
+approval,30,0.95,15,20,0.0,0.2,0.0,0.05333333333333334,0.0,0.018
+approval,30,0.95,16,20,0.0,0.35,0.0,0.05333333333333334,0.0,0.017
+approval,30,0.95,17,20,0.0,0.35,0.0,0.06,0.0,0.02
+approval,30,0.95,18,20,0.0,0.4,0.0,0.045,0.0,0.017
+approval,30,0.95,19,20,0.0,0.2,0.0,0.06,0.0,0.011
+=== NIGHT RUN 3 COMPLETE 2026-10-15T15:49:56Z ===

@@ -1,0 +1,16 @@
+...........................................................              [100%]
+
+---------- coverage: platform linux, python 3.11.2-final-0 -----------
+Name                              Stmts   Miss  Cover
+-----------------------------------------------------
+commonchain/__init__.py               2      0   100%
+commonchain/chain.py                124      7    94%
+commonchain/cli.py                  143     14    90%
+commonchain/governance.py            78      2    97%
+commonchain/models.py                48      1    98%
+commonchain/modules/__init__.py       1      0   100%
+commonchain/modules/payroll.py       62      5    92%
+-----------------------------------------------------
+TOTAL                               458     29    94%
+
+59 passed in 5.66s

@@ -1,0 +1,27 @@
+appended 500000 blocks in 578.6s (864 blocks/s)
+verify() over 500000 blocks: True in 138.7s
+audit_trail() over 500000 blocks in 3.5s
+tamper fuzz progress: 25/500 (25 caught)
+tamper fuzz progress: 50/500 (50 caught)
+tamper fuzz progress: 75/500 (75 caught)
+tamper fuzz progress: 100/500 (100 caught)
+tamper fuzz progress: 125/500 (125 caught)
+tamper fuzz progress: 150/500 (150 caught)
+tamper fuzz progress: 175/500 (175 caught)
+tamper fuzz progress: 200/500 (200 caught)
+tamper fuzz progress: 225/500 (225 caught)
+tamper fuzz progress: 250/500 (250 caught)
+tamper fuzz progress: 275/500 (275 caught)
+tamper fuzz progress: 300/500 (300 caught)
+tamper fuzz progress: 325/500 (325 caught)
+tamper fuzz progress: 350/500 (350 caught)
+tamper fuzz progress: 375/500 (375 caught)
+tamper fuzz progress: 400/500 (400 caught)
+tamper fuzz progress: 425/500 (425 caught)
+tamper fuzz progress: 450/500 (450 caught)
+tamper fuzz progress: 475/500 (475 caught)
+tamper fuzz progress: 500/500 (500 caught)
+tamper fuzz: 500/500 caught (verify_block, O(1) each)
+closing full-chain anchor verify(): True
+amendment hammer: 2000 attempts, 858 rejected; core intact: one_member_one_vote=True, stakes_transferable=False
+ALL STRESS CHECKS PASSED
