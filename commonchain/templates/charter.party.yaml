@@ -1,0 +1,25 @@
+# Charter template: political party / movement
+# Same engine as a cooperative; only the mission and a few policy defaults
+# differ. Governance (one-member-one-vote, hash-linked decision memory) is
+# identical, which is the point: this is a universal decision-record protocol.
+
+name: "{{ org_name }}"
+mission: "A member-governed political organisation. Every policy decision is a hash-linked block appended after a collective vote."
+kind: party
+
+one_member_one_vote: true
+stakes_transferable: false
+
+# --- amendable policy ---
+quorum_pct: 40.0            # parties often tolerate lower turnout quorums
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: binary         # binary | plurality | approval (e.g. platform votes)
+jurisdiction_module: generic
+
+# --- optional domain modules (a party has no payroll; dues/disputes optional) ---
+modules: {}
+  # dues:                # example: membership dues handling
+  #   amount: 0
+  # dispute:
+  #   mode: elected_council  # kleros | elected_council

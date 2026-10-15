@@ -1,0 +1,61 @@
+[project]
+name = "commonchain"
+version = "0.1.0"
+description = "FOSS self-governance core for member-owned collectives: charter = genesis, decisions = hash-linked vote-gated blocks. No managers needed."
+authors = [{ name = "Robin Oberg", email = "robinoberg@live.com" }]
+license = { text = "AGPL-3.0-or-later" }
+readme = "README.md"
+requires-python = ">=3.11,<4.0"
+dependencies = [
+    "pydantic>=2.0.0,<3.0.0",
+    "typer[all]>=0.12.0,<1.0.0",
+    "pyyaml>=6.0.0,<7.0.0",
+    "numpy>=2.0.0,<3.0.0",
+    "matplotlib>=3.7.0,<4.0.0",
+]
+
+[project.scripts]
+commonchain = "commonchain.cli:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0,<8.0.0",
+    "pytest-cov>=4.0.0,<7.0.0",
+    "ruff>=0.9.0,<1.0.0",
+    "mypy>=1.19.1,<2.0.0",
+]
+
+# uv-native dev group (uv sync installs it by default)
+[dependency-groups]
+dev = [
+    "pytest>=7.0.0,<8.0.0",
+    "pytest-cov>=4.0.0,<7.0.0",
+    "ruff>=0.9.0,<1.0.0",
+    "mypy>=1.19.1,<2.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_ignores = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+norecursedirs = ["commonchain", "contracts", "sim", "*.egg", ".git"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["commonchain"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+

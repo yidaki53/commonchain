@@ -1,0 +1,26 @@
+# Charter template: worker cooperative (company)
+# The charter is the genesis state of the collective. Instantiate a concrete
+# charter from this file with `commonchain init --kind coop`.
+
+name: "{{ org_name }}"
+mission: "A worker-owned cooperative: workers own and control the means of production and keep the profits."
+kind: coop
+
+# --- immutable democratic core (do not weaken) ---
+one_member_one_vote: true
+stakes_transferable: false
+
+# --- amendable policy (changeable by charter_amendment super-majority) ---
+quorum_pct: 50.0
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: binary    # binary | plurality | approval (multi-option votes: elect, pick)
+jurisdiction_module: generic  # uk | se | sce | generic  (see docs/playbook/jurisdictions)
+
+# --- optional domain modules (omit any that do not apply) ---
+modules:
+  payroll:               # revenue sharing; a party, club or volunteer network omits this
+    policy: equal        # equal | labor_hours | seniority
+    stable_base_share: 0.5  # fraction paid as equal stable base (anti-precarity)
+  # dispute:             # uncomment to record a dispute-resolution choice
+  #   mode: elected_council  # kleros | elected_council

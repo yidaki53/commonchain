@@ -1,0 +1,29 @@
+# Charter template: hobby club (running, chess, reading, ...)
+# Small roster, rotating captain, multi-option votes: pick routes, books,
+# venues or a captain with the plurality rule instead of yes/no ratification.
+#
+#   commonchain init --name "Tuesday Runners" --kind club
+#   commonchain propose "Saturday route" --options "river,parks,hills" \
+#       --choice 0xaaa:river --choice 0xbbb:parks --choice 0xccc:river
+
+name: "{{ org_name }}"
+mission: "A member-run club. The club runs itself: captains coordinate, the roster decides, and every decision is a hash-linked block."
+kind: club
+
+one_member_one_vote: true
+stakes_transferable: false
+
+# --- amendable policy ---
+quorum_pct: 50.0            # small rosters: half the club should show up
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: plurality      # elect captains / pick options directly
+jurisdiction_module: generic
+
+# --- optional domain modules ---
+modules: {}
+  # dues:                  # optional membership dues tracking
+  #   amount: 0
+  # payroll:               # only for clubs that take money (e.g. prize pools)
+  #   policy: equal
+  #   stable_base_share: 0.5

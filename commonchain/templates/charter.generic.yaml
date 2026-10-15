@@ -1,0 +1,21 @@
+# Charter template: generic collective
+# Start here if none of the named kinds fit. Every policy default is the
+# neutral one; amendments (supermajority) tune quorum, thresholds, the voting
+# rule and modules as the collective learns what it needs.
+
+name: "{{ org_name }}"
+mission: "A self-governing collective with an append-only, hash-linked decision memory."
+kind: generic
+
+one_member_one_vote: true
+stakes_transferable: false
+
+# --- amendable policy ---
+quorum_pct: 50.0
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: binary         # binary | plurality | approval
+jurisdiction_module: generic
+
+# --- optional domain modules ---
+modules: {}

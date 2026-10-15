@@ -1,0 +1,9 @@
+*.pyc
+__pycache__/
+.coverage
+.venv/
+results/night3/*.csv
+results/night3/*.json
+!results/night3/*.md
+!results/night3/*.png
+logs/

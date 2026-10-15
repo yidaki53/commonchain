@@ -1,0 +1,20 @@
+# Charter template: movement / association
+# A loose collective that still needs auditable, tamper-evident decision memory
+# (e.g. a campaign, a mutual-aid network, a research collective).
+
+name: "{{ org_name }}"
+mission: "A self-governing movement. Decisions are recorded as an immutable, hash-linked chain owned by the membership."
+kind: movement
+
+one_member_one_vote: true
+stakes_transferable: false
+
+# --- amendable policy ---
+quorum_pct: 30.0            # movements are large and diffuse; low quorum by default
+pass_pct: 50.0
+supermajority_pct: 75.0     # movements amend their core more cautiously
+voting_rule: binary         # binary | plurality | approval (e.g. campaign prioritisation)
+jurisdiction_module: generic
+
+# --- optional domain modules (a volunteer network has no payroll) ---
+modules: {}
