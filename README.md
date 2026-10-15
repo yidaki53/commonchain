@@ -17,14 +17,18 @@ Core principles, enforced in code rather than promised in prose:
   plutocracy. Ballots with weight != 1 are rejected at construction.
 - **Soulbound ownership.** Stakes are non-transferable; there is deliberately
   no `transfer_stake()` API. Offboarding burns a stake, it never moves it.
-- **Democratic floor is immutable.** `one_worker_one_vote` and
+- **Democratic floor is immutable.** `one_member_one_vote` and
   `stakes_transferable=false` cannot be changed by any vote — a hostile
   majority cannot vote itself into shareholder-style control.
 - **Payroll is a module, not a feature.** Co-ops can enable profit splitting
   (`modules/payroll`); parties and volunteering organisations simply do not
   enable it. Nothing organisation-specific is hardcoded in the core.
-- **Coordinators, not bosses.** Rotation mandates (`--term`) expire; the sim
-  shows short terms are required to prevent incumbency capture.
+- **Voting rules are pluggable.** Charters choose `binary` (yes/no
+  ratification), `plurality` (decisive club default), or `approval`
+  (expressive, needs revote-friendly culture) — all weight-1, all
+  vote-gated, all hash-linked. Rule itself is amendable policy, not core.
+- **Coordinators, not bosses.** Rotation mandates (`--term`) expire; short
+  terms plus revocable delegation keep power circulating.
 
 ## Quickstart (uv)
 
@@ -39,7 +43,7 @@ uv run commonchain pay 1000 --dir ./demo         # distribute revenue (coop payr
 uv run commonchain audit --dir ./demo           # hash-linked trail + integrity check
 ```
 
-Charter kinds: `coop` (company), `party` (political party), `movement`.
+Charter kinds: `coop` (company), `party`, `movement`, `club`, `generic`.
 Jurisdiction wrapper modules are pluggable (`--jurisdiction uk|se|sce|generic`) —
 see `docs/playbook/jurisdictions/`. The project ships a legal-wrapper playbook,
 not legal advice.
@@ -75,10 +79,11 @@ uv run python analysis/make_figures.py                # regenerate figures
 uv run commonchain --help                             # CLI
 ```
 
-Simulation-validated defaults (see `results/OVERNIGHT_FINDINGS.md` and
-`results/night2/`): `quorum_pct=50, pass_pct=50` — raising quorum buys
-paralysis, not legitimacy, because turnout (not thresholds) is the binding
-constraint.
+Simulation-validated defaults (see `results/OVERNIGHT_FINDINGS.md`,
+`results/night2/`, `results/night3/`): `quorum_pct=50, pass_pct=50`,
+`voting_rule=plurality` for clubs — raising quorum buys paralysis, not
+legitimacy, because turnout (not thresholds) is the binding constraint.
+Scale: 500k-block chain, full verify ~150s, 500/500 tampers caught.
 
 ## Radical honesty
 
