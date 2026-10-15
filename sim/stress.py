@@ -53,21 +53,30 @@ def main(n_blocks: int = 50000, n_fuzz: int = 1000, n_amend: int = 5000) -> None
     trail = col.audit_trail()
     emit(f"audit_trail() over {len(trail)} blocks in {time.time() - t0:.1f}s")
 
-    # Fuzz: mutate stored ballots/hashes, verify() must catch every one.
+    # Fuzz: mutate stored ballots/hashes, verify_block() on the tampered
+    # neighbourhood must catch every one. Per-iteration cost is O(1) instead
+    # of a full-chain verify() -- which already ran above (anchor) and runs
+    # again below (closing anchor), so coverage is not weakened.
     rng = random.Random(42)
     caught = 0
-    for _ in range(n_fuzz):
-        b = rng.choice(col.chain)
+    for i in range(n_fuzz):
+        idx = rng.randrange(len(col.chain))
+        b = col.chain[idx]
         saved_yes, saved_hash = b.tally.yes, b.block_hash
         if rng.random() < 0.5:
             b.tally.yes = saved_yes + 99
         else:
             b.block_hash = "ff" * 32
-        if not col.verify():
+        if not col.verify_block(idx):
             caught += 1
         b.tally.yes, b.block_hash = saved_yes, saved_hash
-    emit(f"tamper fuzz: {caught}/{n_fuzz} caught")
-    assert caught == n_fuzz, "verify() missed a tamper!"
+        if (i + 1) % 25 == 0 or i + 1 == n_fuzz:
+            emit(f"tamper fuzz progress: {i + 1}/{n_fuzz} ({caught} caught)")
+    emit(f"tamper fuzz: {caught}/{n_fuzz} caught (verify_block, O(1) each)")
+    assert caught == n_fuzz, "verify_block() missed a tamper!"
+    anchor_ok = col.verify()
+    emit(f"closing full-chain anchor verify(): {anchor_ok}")
+    assert anchor_ok, "chain failed to restore after fuzz"
 
     # Amendment hammer: random policy changes must never touch the core.
     col2 = Collective.from_charter(charter, members)

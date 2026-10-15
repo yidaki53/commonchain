@@ -289,6 +289,37 @@ class Collective:
             prev = block.block_hash
         return True
 
+    def verify_block(self, index: int) -> bool:
+        """Verify a single block plus its linkage to both neighbours.
+
+        O(1): recomputes ``compute_hash()`` and checks ``prev_hash`` against
+        the predecessor (or genesis for block 0), ``block_hash`` against the
+        recomputation, ``charter_hash`` against ``charter_history``, and the
+        successor's ``prev_hash`` against this block's stored hash. Returns
+        True iff the tampered neighbourhood is self-consistent.
+        """
+        if index < 0 or index >= len(self.chain):
+            return False
+        block = self.chain[index]
+        if block.compute_hash() != block.block_hash:
+            return False
+        if block.charter_version >= len(self.charter_history):
+            return False
+        if block.charter_hash != hash_model(
+            self.charter_history[block.charter_version]
+        ):
+            return False
+        expected_prev = (
+            self.genesis_hash if index == 0 else self.chain[index - 1].block_hash
+        )
+        if block.prev_hash != expected_prev:
+            return False
+        if index + 1 < len(self.chain) and (
+            self.chain[index + 1].prev_hash != block.block_hash
+        ):
+            return False
+        return True
+
     def audit_trail(self) -> list[dict]:
         """A compact, human-readable view of the collective's evolution."""
         return [
