@@ -198,11 +198,12 @@ def report_gov(rng: random.Random) -> list[str]:
 def report_voting(rng: random.Random) -> list[str]:
     """Table 3: night-3 voting rules with cluster-bootstrap 95% CIs."""
     rows = load_rows("night3/voting_sweep.csv")
+    n_runs = len(rows)
     lines = [
         "",
         "## Table 3: voting rules -- cluster bootstrap (resample = seed)",
         "",
-        "Source: `night3/voting_sweep.csv`, {n} runs. Club-scale",
+        f"Source: `night3/voting_sweep.csv`, {n_runs} runs. Club-scale",
         "collectives (N in {5,9,15,30}) with sincere preferences and an apathy",
         "abstention model. Resampling unit: seed.",
         "",
