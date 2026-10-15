@@ -35,6 +35,7 @@ run "Job 2: template fuzz"       python sim/template_fuzz.py
 run "Job 3: ballot fuzz"         python sim/ballot_fuzz.py
 
 # Job 4: scale stress -- 500k blocks (10x night 1), tamper fuzz, core hammer.
+# Fuzz is O(1) per iteration since verify_block(); 500 iterations is seconds.
 run "Job 4: scale stress"        python sim/stress.py --blocks 500000 --fuzz 500 --amend 2000
 
 # Job 5: analysis + gate.
@@ -44,5 +45,16 @@ run "Job 5: test gate"            python -m pytest tests/ -q -p no:cacheprovider
 run "Job 5: lint gate"            ruff check commonchain sim analysis tests
 
 echo "=== SUMMARY ==="
-tail -n 8 "$RESULTS/voting_sweep.csv" 2>/dev/null || echo "no voting sweep data"
+uv run python - <<'EOF'
+import csv
+from pathlib import Path
+p = Path("results/night3/voting_sweep.csv")
+rows = list(csv.DictReader(p.open())) if p.exists() else []
+print(f"voting cells: {len(rows)}")
+bad = [r for r in rows if r.get("pass_rate") in (None, "", "-1")]
+print(f"failed cells: {len(bad)}")
+for rule in ("binary", "plurality", "approval"):
+    rs = [float(r["pass_rate"]) for r in rows if r["voting_rule"] == rule and r.get("pass_rate") not in (None, "", "-1")]
+    print(f"{rule}: n={len(rs)} mean_pass={sum(rs)/len(rs):.3f}" if rs else f"{rule}: no data")
+EOF
 echo "=== NIGHT RUN 3 COMPLETE $(date -u +%FT%TZ) ==="

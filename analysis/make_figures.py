@@ -113,11 +113,16 @@ def fig_mandate(rows: list[dict]) -> None:
 
 
 def tab_quorum(rows: list[dict]) -> None:
-    """Markdown table: quorum pathologies at baseline (n=9, honest)."""
+    """Legacy (superseded) flat quorum table -- writes tab0, never tab1."""
     if not rows:
         return
     lines = [
-        "# Quorum pathologies (n=9, honest majority, 20 proposals)",
+        "# LEGACY (superseded): flat quorum table, no CIs",
+        "",
+        "Night-1 artifact kept for provenance. Do NOT cite: the citable",
+        "versions with cluster-bootstrap 95% CIs are",
+        "`night2/tab1_quorum_pathologies.md` (apathy regime) and",
+        "`night2/tab2_base_sweep.md` (full-mobilisation regime).",
         "",
         "| quorum % | pass rate | quorum-fail rate | deadlock rate |",
         "|---|---|---|---|",
@@ -134,8 +139,8 @@ def tab_quorum(rows: list[dict]) -> None:
         mq = sum(_f(sub, "quorum_fail_rate")) / len(sub)
         md = sum(_f(sub, "deadlock_rate")) / len(sub)
         lines.append(f"| {q:g} | {mp:.2f} | {mq:.2f} | {md:.2f} |")
-    (RESULTS / "night2" / "tab1_quorum_pathologies.md").write_text("\n".join(lines) + "\n")
-    print("[fig] night2/tab1_quorum_pathologies.md", flush=True)
+    (RESULTS / "night2" / "tab0_legacy_flat_quorum.md").write_text("\n".join(lines) + "\n")
+    print("[fig] night2/tab0_legacy_flat_quorum.md", flush=True)
 
 
 def fig_voting(rows: list[dict]) -> None:
