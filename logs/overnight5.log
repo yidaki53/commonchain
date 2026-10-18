@@ -1,0 +1,536 @@
+nohup: ignoring input
+=== Job 0a: fragmentation smoke ===
+[frag] 24 cells total, 24 done, 0 fresh
+[frag] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/fragmentation_sweep_smoke.csv
+--- OK: Job 0a: fragmentation smoke
+=== Job 0b: amendment smoke ===
+[capture] 2 cells total, 2 done, 0 fresh
+[capture] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/amendment_sweep_smoke.csv
+--- OK: Job 0b: amendment smoke
+=== Job 0c: deleg-blocs smoke ===
+[delebloc] 8 cells total, 8 done, 0 fresh
+[delebloc] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/deleg_blocs_sweep_smoke.csv
+--- OK: Job 0c: deleg-blocs smoke
+=== Job 0d: verify bench smoke ===
+[bench] L=100: verify=0.0426s (425.849us/block), verify_block=459.936us
+[bench] L=500: verify=0.2024s (404.847us/block), verify_block=418.141us
+[bench] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/verify_bench_smoke.csv
+--- OK: Job 0d: verify bench smoke
+=== Job 0e: preflight env ===
+3.11.2 (main, Oct  7 2026, 12:35:07) [GCC 12.2.0]
+pydantic 2.14.1
+matplotlib 3.11.2
+--- OK: Job 0e: preflight env
+=== Job 1: fragmentation sweep ===
+[frag] 9720 cells total, 0 done, 9720 fresh
+[frag] 250/9720 fresh cells done
+[frag] 500/9720 fresh cells done
+[frag] 750/9720 fresh cells done
+[frag] 1000/9720 fresh cells done
+[frag] 1250/9720 fresh cells done
+[frag] 1500/9720 fresh cells done
+[frag] 1750/9720 fresh cells done
+[frag] 2000/9720 fresh cells done
+[frag] 2250/9720 fresh cells done
+[frag] 2500/9720 fresh cells done
+[frag] 2750/9720 fresh cells done
+[frag] 3000/9720 fresh cells done
+[frag] 3250/9720 fresh cells done
+[frag] 3500/9720 fresh cells done
+[frag] 3750/9720 fresh cells done
+[frag] 4000/9720 fresh cells done
+[frag] 4250/9720 fresh cells done
+[frag] 4500/9720 fresh cells done
+[frag] 4750/9720 fresh cells done
+[frag] 5000/9720 fresh cells done
+[frag] 5250/9720 fresh cells done
+[frag] 5500/9720 fresh cells done
+[frag] 5750/9720 fresh cells done
+[frag] 6000/9720 fresh cells done
+[frag] 6250/9720 fresh cells done
+[frag] 6500/9720 fresh cells done
+[frag] 6750/9720 fresh cells done
+[frag] 7000/9720 fresh cells done
+[frag] 7250/9720 fresh cells done
+[frag] 7500/9720 fresh cells done
+[frag] 7750/9720 fresh cells done
+[frag] 8000/9720 fresh cells done
+[frag] 8250/9720 fresh cells done
+[frag] 8500/9720 fresh cells done
+[frag] 8750/9720 fresh cells done
+[frag] 9000/9720 fresh cells done
+[frag] 9250/9720 fresh cells done
+[frag] 9500/9720 fresh cells done
+[frag] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/fragmentation_sweep.csv
+--- OK: Job 1: fragmentation sweep
+=== Job 2: capture sweep ===
+[capture] 2700 cells total, 0 done, 2700 fresh
+[capture] 250/2700 fresh cells done
+[capture] 500/2700 fresh cells done
+[capture] 750/2700 fresh cells done
+[capture] 1000/2700 fresh cells done
+[capture] 1250/2700 fresh cells done
+[capture] 1500/2700 fresh cells done
+[capture] 1750/2700 fresh cells done
+[capture] 2000/2700 fresh cells done
+[capture] 2250/2700 fresh cells done
+[capture] 2500/2700 fresh cells done
+[capture] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/amendment_sweep.csv
+--- OK: Job 2: capture sweep
+=== Job 3: deleg-blocs sweep ===
+[delebloc] 1620 cells total, 0 done, 1620 fresh
+[delebloc] 100/1620 fresh cells done
+[delebloc] 200/1620 fresh cells done
+[delebloc] 300/1620 fresh cells done
+[delebloc] 400/1620 fresh cells done
+[delebloc] 500/1620 fresh cells done
+[delebloc] 600/1620 fresh cells done
+[delebloc] 700/1620 fresh cells done
+[delebloc] 800/1620 fresh cells done
+[delebloc] 900/1620 fresh cells done
+[delebloc] 1000/1620 fresh cells done
+[delebloc] 1100/1620 fresh cells done
+[delebloc] 1200/1620 fresh cells done
+[delebloc] 1300/1620 fresh cells done
+[delebloc] 1400/1620 fresh cells done
+[delebloc] 1500/1620 fresh cells done
+[delebloc] 1600/1620 fresh cells done
+[delebloc] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/deleg_blocs_sweep.csv
+--- OK: Job 3: deleg-blocs sweep
+=== Job 4: verify bench ===
+[bench] L=1000: verify=0.3221s (322.133us/block), verify_block=310.297us
+[bench] L=5000: verify=1.4058s (281.157us/block), verify_block=363.542us
+[bench] L=10000: verify=2.7989s (279.892us/block), verify_block=327.45us
+[bench] L=25000: verify=6.6661s (266.644us/block), verify_block=227.444us
+[bench] complete -> /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/verify_bench.csv
+--- OK: Job 4: verify bench
+=== Job 5: CI tables ===
+[tables] frag cell approval/2/0.0/0.0
+[tables] frag cell approval/2/0.0/0.5
+[tables] frag cell approval/2/0.0/0.8
+[tables] frag cell approval/2/0.4/0.0
+[tables] frag cell approval/2/0.4/0.5
+[tables] frag cell approval/2/0.4/0.8
+[tables] frag cell approval/2/0.8/0.0
+[tables] frag cell approval/2/0.8/0.5
+[tables] frag cell approval/2/0.8/0.8
+[tables] frag cell approval/3/0.0/0.0
+[tables] frag cell approval/3/0.0/0.5
+[tables] frag cell approval/3/0.0/0.8
+[tables] frag cell approval/3/0.4/0.0
+[tables] frag cell approval/3/0.4/0.5
+[tables] frag cell approval/3/0.4/0.8
+[tables] frag cell approval/3/0.8/0.0
+[tables] frag cell approval/3/0.8/0.5
+[tables] frag cell approval/3/0.8/0.8
+[tables] frag cell approval/5/0.0/0.0
+[tables] frag cell approval/5/0.0/0.5
+[tables] frag cell approval/5/0.0/0.8
+[tables] frag cell approval/5/0.4/0.0
+[tables] frag cell approval/5/0.4/0.5
+[tables] frag cell approval/5/0.4/0.8
+[tables] frag cell approval/5/0.8/0.0
+[tables] frag cell approval/5/0.8/0.5
+[tables] frag cell approval/5/0.8/0.8
+[tables] frag cell binary/2/0.0/0.0
+[tables] frag cell binary/2/0.0/0.5
+[tables] frag cell binary/2/0.0/0.8
+[tables] frag cell binary/2/0.4/0.0
+[tables] frag cell binary/2/0.4/0.5
+[tables] frag cell binary/2/0.4/0.8
+[tables] frag cell binary/2/0.8/0.0
+[tables] frag cell binary/2/0.8/0.5
+[tables] frag cell binary/2/0.8/0.8
+[tables] frag cell binary/3/0.0/0.0
+[tables] frag cell binary/3/0.0/0.5
+[tables] frag cell binary/3/0.0/0.8
+[tables] frag cell binary/3/0.4/0.0
+[tables] frag cell binary/3/0.4/0.5
+[tables] frag cell binary/3/0.4/0.8
+[tables] frag cell binary/3/0.8/0.0
+[tables] frag cell binary/3/0.8/0.5
+[tables] frag cell binary/3/0.8/0.8
+[tables] frag cell binary/5/0.0/0.0
+[tables] frag cell binary/5/0.0/0.5
+[tables] frag cell binary/5/0.0/0.8
+[tables] frag cell binary/5/0.4/0.0
+[tables] frag cell binary/5/0.4/0.5
+[tables] frag cell binary/5/0.4/0.8
+[tables] frag cell binary/5/0.8/0.0
+[tables] frag cell binary/5/0.8/0.5
+[tables] frag cell binary/5/0.8/0.8
+[tables] frag cell plurality/2/0.0/0.0
+[tables] frag cell plurality/2/0.0/0.5
+[tables] frag cell plurality/2/0.0/0.8
+[tables] frag cell plurality/2/0.4/0.0
+[tables] frag cell plurality/2/0.4/0.5
+[tables] frag cell plurality/2/0.4/0.8
+[tables] frag cell plurality/2/0.8/0.0
+[tables] frag cell plurality/2/0.8/0.5
+[tables] frag cell plurality/2/0.8/0.8
+[tables] frag cell plurality/3/0.0/0.0
+[tables] frag cell plurality/3/0.0/0.5
+[tables] frag cell plurality/3/0.0/0.8
+[tables] frag cell plurality/3/0.4/0.0
+[tables] frag cell plurality/3/0.4/0.5
+[tables] frag cell plurality/3/0.4/0.8
+[tables] frag cell plurality/3/0.8/0.0
+[tables] frag cell plurality/3/0.8/0.5
+[tables] frag cell plurality/3/0.8/0.8
+[tables] frag cell plurality/5/0.0/0.0
+[tables] frag cell plurality/5/0.0/0.5
+[tables] frag cell plurality/5/0.0/0.8
+[tables] frag cell plurality/5/0.4/0.0
+[tables] frag cell plurality/5/0.4/0.5
+[tables] frag cell plurality/5/0.4/0.8
+[tables] frag cell plurality/5/0.8/0.0
+[tables] frag cell plurality/5/0.8/0.5
+[tables] frag cell plurality/5/0.8/0.8
+[tables] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/tab5_fragmentation.md (92 lines)
+[tables] capture cell 15/60.0/0.2/0.2
+[tables] capture cell 15/60.0/0.2/0.5
+[tables] capture cell 15/60.0/0.2/0.8
+[tables] capture cell 15/60.0/0.3/0.2
+[tables] capture cell 15/60.0/0.3/0.5
+[tables] capture cell 15/60.0/0.3/0.8
+[tables] capture cell 15/60.0/0.34/0.2
+[tables] capture cell 15/60.0/0.34/0.5
+[tables] capture cell 15/60.0/0.34/0.8
+[tables] capture cell 15/60.0/0.4/0.2
+[tables] capture cell 15/60.0/0.4/0.5
+[tables] capture cell 15/60.0/0.4/0.8
+[tables] capture cell 15/60.0/0.5/0.2
+[tables] capture cell 15/60.0/0.5/0.5
+[tables] capture cell 15/60.0/0.5/0.8
+[tables] capture cell 15/66.0/0.2/0.2
+[tables] capture cell 15/66.0/0.2/0.5
+[tables] capture cell 15/66.0/0.2/0.8
+[tables] capture cell 15/66.0/0.3/0.2
+[tables] capture cell 15/66.0/0.3/0.5
+[tables] capture cell 15/66.0/0.3/0.8
+[tables] capture cell 15/66.0/0.34/0.2
+[tables] capture cell 15/66.0/0.34/0.5
+[tables] capture cell 15/66.0/0.34/0.8
+[tables] capture cell 15/66.0/0.4/0.2
+[tables] capture cell 15/66.0/0.4/0.5
+[tables] capture cell 15/66.0/0.4/0.8
+[tables] capture cell 15/66.0/0.5/0.2
+[tables] capture cell 15/66.0/0.5/0.5
+[tables] capture cell 15/66.0/0.5/0.8
+[tables] capture cell 15/75.0/0.2/0.2
+[tables] capture cell 15/75.0/0.2/0.5
+[tables] capture cell 15/75.0/0.2/0.8
+[tables] capture cell 15/75.0/0.3/0.2
+[tables] capture cell 15/75.0/0.3/0.5
+[tables] capture cell 15/75.0/0.3/0.8
+[tables] capture cell 15/75.0/0.34/0.2
+[tables] capture cell 15/75.0/0.34/0.5
+[tables] capture cell 15/75.0/0.34/0.8
+[tables] capture cell 15/75.0/0.4/0.2
+[tables] capture cell 15/75.0/0.4/0.5
+[tables] capture cell 15/75.0/0.4/0.8
+[tables] capture cell 15/75.0/0.5/0.2
+[tables] capture cell 15/75.0/0.5/0.5
+[tables] capture cell 15/75.0/0.5/0.8
+[tables] capture cell 51/60.0/0.2/0.2
+[tables] capture cell 51/60.0/0.2/0.5
+[tables] capture cell 51/60.0/0.2/0.8
+[tables] capture cell 51/60.0/0.3/0.2
+[tables] capture cell 51/60.0/0.3/0.5
+[tables] capture cell 51/60.0/0.3/0.8
+[tables] capture cell 51/60.0/0.34/0.2
+[tables] capture cell 51/60.0/0.34/0.5
+[tables] capture cell 51/60.0/0.34/0.8
+[tables] capture cell 51/60.0/0.4/0.2
+[tables] capture cell 51/60.0/0.4/0.5
+[tables] capture cell 51/60.0/0.4/0.8
+[tables] capture cell 51/60.0/0.5/0.2
+[tables] capture cell 51/60.0/0.5/0.5
+[tables] capture cell 51/60.0/0.5/0.8
+[tables] capture cell 51/66.0/0.2/0.2
+[tables] capture cell 51/66.0/0.2/0.5
+[tables] capture cell 51/66.0/0.2/0.8
+[tables] capture cell 51/66.0/0.3/0.2
+[tables] capture cell 51/66.0/0.3/0.5
+[tables] capture cell 51/66.0/0.3/0.8
+[tables] capture cell 51/66.0/0.34/0.2
+[tables] capture cell 51/66.0/0.34/0.5
+[tables] capture cell 51/66.0/0.34/0.8
+[tables] capture cell 51/66.0/0.4/0.2
+[tables] capture cell 51/66.0/0.4/0.5
+[tables] capture cell 51/66.0/0.4/0.8
+[tables] capture cell 51/66.0/0.5/0.2
+[tables] capture cell 51/66.0/0.5/0.5
+[tables] capture cell 51/66.0/0.5/0.8
+[tables] capture cell 51/75.0/0.2/0.2
+[tables] capture cell 51/75.0/0.2/0.5
+[tables] capture cell 51/75.0/0.2/0.8
+[tables] capture cell 51/75.0/0.3/0.2
+[tables] capture cell 51/75.0/0.3/0.5
+[tables] capture cell 51/75.0/0.3/0.8
+[tables] capture cell 51/75.0/0.34/0.2
+[tables] capture cell 51/75.0/0.34/0.5
+[tables] capture cell 51/75.0/0.34/0.8
+[tables] capture cell 51/75.0/0.4/0.2
+[tables] capture cell 51/75.0/0.4/0.5
+[tables] capture cell 51/75.0/0.4/0.8
+[tables] capture cell 51/75.0/0.5/0.2
+[tables] capture cell 51/75.0/0.5/0.5
+[tables] capture cell 51/75.0/0.5/0.8
+[tables] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/tab6_capture.md (101 lines)
+[tables] delegbloc cell 0.5/0.25/0.0/1
+[tables] delegbloc cell 0.5/0.25/0.0/3
+[tables] delegbloc cell 0.5/0.25/0.5/1
+[tables] delegbloc cell 0.5/0.25/0.5/3
+[tables] delegbloc cell 0.5/0.25/1.0/1
+[tables] delegbloc cell 0.5/0.25/1.0/3
+[tables] delegbloc cell 0.5/0.5/0.0/1
+[tables] delegbloc cell 0.5/0.5/0.0/3
+[tables] delegbloc cell 0.5/0.5/0.5/1
+[tables] delegbloc cell 0.5/0.5/0.5/3
+[tables] delegbloc cell 0.5/0.5/1.0/1
+[tables] delegbloc cell 0.5/0.5/1.0/3
+[tables] delegbloc cell 0.5/0.75/0.0/1
+[tables] delegbloc cell 0.5/0.75/0.0/3
+[tables] delegbloc cell 0.5/0.75/0.5/1
+[tables] delegbloc cell 0.5/0.75/0.5/3
+[tables] delegbloc cell 0.5/0.75/1.0/1
+[tables] delegbloc cell 0.5/0.75/1.0/3
+[tables] delegbloc cell 0.8/0.25/0.0/1
+[tables] delegbloc cell 0.8/0.25/0.0/3
+[tables] delegbloc cell 0.8/0.25/0.5/1
+[tables] delegbloc cell 0.8/0.25/0.5/3
+[tables] delegbloc cell 0.8/0.25/1.0/1
+[tables] delegbloc cell 0.8/0.25/1.0/3
+[tables] delegbloc cell 0.8/0.5/0.0/1
+[tables] delegbloc cell 0.8/0.5/0.0/3
+[tables] delegbloc cell 0.8/0.5/0.5/1
+[tables] delegbloc cell 0.8/0.5/0.5/3
+[tables] delegbloc cell 0.8/0.5/1.0/1
+[tables] delegbloc cell 0.8/0.5/1.0/3
+[tables] delegbloc cell 0.8/0.75/0.0/1
+[tables] delegbloc cell 0.8/0.75/0.0/3
+[tables] delegbloc cell 0.8/0.75/0.5/1
+[tables] delegbloc cell 0.8/0.75/0.5/3
+[tables] delegbloc cell 0.8/0.75/1.0/1
+[tables] delegbloc cell 0.8/0.75/1.0/3
+[tables] delegbloc cell 0.95/0.25/0.0/1
+[tables] delegbloc cell 0.95/0.25/0.0/3
+[tables] delegbloc cell 0.95/0.25/0.5/1
+[tables] delegbloc cell 0.95/0.25/0.5/3
+[tables] delegbloc cell 0.95/0.25/1.0/1
+[tables] delegbloc cell 0.95/0.25/1.0/3
+[tables] delegbloc cell 0.95/0.5/0.0/1
+[tables] delegbloc cell 0.95/0.5/0.0/3
+[tables] delegbloc cell 0.95/0.5/0.5/1
+[tables] delegbloc cell 0.95/0.5/0.5/3
+[tables] delegbloc cell 0.95/0.5/1.0/1
+[tables] delegbloc cell 0.95/0.5/1.0/3
+[tables] delegbloc cell 0.95/0.75/0.0/1
+[tables] delegbloc cell 0.95/0.75/0.0/3
+[tables] delegbloc cell 0.95/0.75/0.5/1
+[tables] delegbloc cell 0.95/0.75/0.5/3
+[tables] delegbloc cell 0.95/0.75/1.0/1
+[tables] delegbloc cell 0.95/0.75/1.0/3
+[tables] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/tab7_deleg_blocs.md (66 lines)
+[tables] mandate-ci cell 5/1/0.0
+[tables] mandate-ci cell 5/1/0.2
+[tables] mandate-ci cell 5/1/0.4
+[tables] mandate-ci cell 5/1/0.6
+[tables] mandate-ci cell 5/2/0.0
+[tables] mandate-ci cell 5/2/0.2
+[tables] mandate-ci cell 5/2/0.4
+[tables] mandate-ci cell 5/2/0.6
+[tables] mandate-ci cell 5/3/0.0
+[tables] mandate-ci cell 5/3/0.2
+[tables] mandate-ci cell 5/3/0.4
+[tables] mandate-ci cell 5/3/0.6
+[tables] mandate-ci cell 5/5/0.0
+[tables] mandate-ci cell 5/5/0.2
+[tables] mandate-ci cell 5/5/0.4
+[tables] mandate-ci cell 5/5/0.6
+[tables] mandate-ci cell 5/10/0.0
+[tables] mandate-ci cell 5/10/0.2
+[tables] mandate-ci cell 5/10/0.4
+[tables] mandate-ci cell 5/10/0.6
+[tables] mandate-ci cell 5/20/0.0
+[tables] mandate-ci cell 5/20/0.2
+[tables] mandate-ci cell 5/20/0.4
+[tables] mandate-ci cell 5/20/0.6
+[tables] mandate-ci cell 15/1/0.0
+[tables] mandate-ci cell 15/1/0.2
+[tables] mandate-ci cell 15/1/0.4
+[tables] mandate-ci cell 15/1/0.6
+[tables] mandate-ci cell 15/2/0.0
+[tables] mandate-ci cell 15/2/0.2
+[tables] mandate-ci cell 15/2/0.4
+[tables] mandate-ci cell 15/2/0.6
+[tables] mandate-ci cell 15/3/0.0
+[tables] mandate-ci cell 15/3/0.2
+[tables] mandate-ci cell 15/3/0.4
+[tables] mandate-ci cell 15/3/0.6
+[tables] mandate-ci cell 15/5/0.0
+[tables] mandate-ci cell 15/5/0.2
+[tables] mandate-ci cell 15/5/0.4
+[tables] mandate-ci cell 15/5/0.6
+[tables] mandate-ci cell 15/10/0.0
+[tables] mandate-ci cell 15/10/0.2
+[tables] mandate-ci cell 15/10/0.4
+[tables] mandate-ci cell 15/10/0.6
+[tables] mandate-ci cell 15/20/0.0
+[tables] mandate-ci cell 15/20/0.2
+[tables] mandate-ci cell 15/20/0.4
+[tables] mandate-ci cell 15/20/0.6
+[tables] mandate-ci cell 51/1/0.0
+[tables] mandate-ci cell 51/1/0.2
+[tables] mandate-ci cell 51/1/0.4
+[tables] mandate-ci cell 51/1/0.6
+[tables] mandate-ci cell 51/2/0.0
+[tables] mandate-ci cell 51/2/0.2
+[tables] mandate-ci cell 51/2/0.4
+[tables] mandate-ci cell 51/2/0.6
+[tables] mandate-ci cell 51/3/0.0
+[tables] mandate-ci cell 51/3/0.2
+[tables] mandate-ci cell 51/3/0.4
+[tables] mandate-ci cell 51/3/0.6
+[tables] mandate-ci cell 51/5/0.0
+[tables] mandate-ci cell 51/5/0.2
+[tables] mandate-ci cell 51/5/0.4
+[tables] mandate-ci cell 51/5/0.6
+[tables] mandate-ci cell 51/10/0.0
+[tables] mandate-ci cell 51/10/0.2
+[tables] mandate-ci cell 51/10/0.4
+[tables] mandate-ci cell 51/10/0.6
+[tables] mandate-ci cell 51/20/0.0
+[tables] mandate-ci cell 51/20/0.2
+[tables] mandate-ci cell 51/20/0.4
+[tables] mandate-ci cell 51/20/0.6
+[tables] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/tab8_mandate_ci.md (84 lines)
+[tables] deleg-ci cell 5/0.3/0.8/0.0
+[tables] deleg-ci cell 5/0.3/0.8/0.25
+[tables] deleg-ci cell 5/0.3/0.8/0.25
+[tables] deleg-ci cell 5/0.3/0.8/0.5
+[tables] deleg-ci cell 5/0.3/0.8/0.5
+[tables] deleg-ci cell 5/0.3/0.95/0.0
+[tables] deleg-ci cell 5/0.3/0.95/0.25
+[tables] deleg-ci cell 5/0.3/0.95/0.25
+[tables] deleg-ci cell 5/0.3/0.95/0.5
+[tables] deleg-ci cell 5/0.3/0.95/0.5
+[tables] deleg-ci cell 5/0.5/0.8/0.0
+[tables] deleg-ci cell 5/0.5/0.8/0.25
+[tables] deleg-ci cell 5/0.5/0.8/0.25
+[tables] deleg-ci cell 5/0.5/0.8/0.5
+[tables] deleg-ci cell 5/0.5/0.8/0.5
+[tables] deleg-ci cell 5/0.5/0.95/0.0
+[tables] deleg-ci cell 5/0.5/0.95/0.25
+[tables] deleg-ci cell 5/0.5/0.95/0.25
+[tables] deleg-ci cell 5/0.5/0.95/0.5
+[tables] deleg-ci cell 5/0.5/0.95/0.5
+[tables] deleg-ci cell 5/0.7/0.8/0.0
+[tables] deleg-ci cell 5/0.7/0.8/0.25
+[tables] deleg-ci cell 5/0.7/0.8/0.25
+[tables] deleg-ci cell 5/0.7/0.8/0.5
+[tables] deleg-ci cell 5/0.7/0.8/0.5
+[tables] deleg-ci cell 5/0.7/0.95/0.0
+[tables] deleg-ci cell 5/0.7/0.95/0.25
+[tables] deleg-ci cell 5/0.7/0.95/0.25
+[tables] deleg-ci cell 5/0.7/0.95/0.5
+[tables] deleg-ci cell 5/0.7/0.95/0.5
+[tables] deleg-ci cell 15/0.3/0.8/0.0
+[tables] deleg-ci cell 15/0.3/0.8/0.25
+[tables] deleg-ci cell 15/0.3/0.8/0.25
+[tables] deleg-ci cell 15/0.3/0.8/0.5
+[tables] deleg-ci cell 15/0.3/0.8/0.5
+[tables] deleg-ci cell 15/0.3/0.95/0.0
+[tables] deleg-ci cell 15/0.3/0.95/0.25
+[tables] deleg-ci cell 15/0.3/0.95/0.25
+[tables] deleg-ci cell 15/0.3/0.95/0.5
+[tables] deleg-ci cell 15/0.3/0.95/0.5
+[tables] deleg-ci cell 15/0.5/0.8/0.0
+[tables] deleg-ci cell 15/0.5/0.8/0.25
+[tables] deleg-ci cell 15/0.5/0.8/0.25
+[tables] deleg-ci cell 15/0.5/0.8/0.5
+[tables] deleg-ci cell 15/0.5/0.8/0.5
+[tables] deleg-ci cell 15/0.5/0.95/0.0
+[tables] deleg-ci cell 15/0.5/0.95/0.25
+[tables] deleg-ci cell 15/0.5/0.95/0.25
+[tables] deleg-ci cell 15/0.5/0.95/0.5
+[tables] deleg-ci cell 15/0.5/0.95/0.5
+[tables] deleg-ci cell 15/0.7/0.8/0.0
+[tables] deleg-ci cell 15/0.7/0.8/0.25
+[tables] deleg-ci cell 15/0.7/0.8/0.25
+[tables] deleg-ci cell 15/0.7/0.8/0.5
+[tables] deleg-ci cell 15/0.7/0.8/0.5
+[tables] deleg-ci cell 15/0.7/0.95/0.0
+[tables] deleg-ci cell 15/0.7/0.95/0.25
+[tables] deleg-ci cell 15/0.7/0.95/0.25
+[tables] deleg-ci cell 15/0.7/0.95/0.5
+[tables] deleg-ci cell 15/0.7/0.95/0.5
+[tables] deleg-ci cell 51/0.3/0.8/0.0
+[tables] deleg-ci cell 51/0.3/0.8/0.25
+[tables] deleg-ci cell 51/0.3/0.8/0.25
+[tables] deleg-ci cell 51/0.3/0.8/0.5
+[tables] deleg-ci cell 51/0.3/0.8/0.5
+[tables] deleg-ci cell 51/0.3/0.95/0.0
+[tables] deleg-ci cell 51/0.3/0.95/0.25
+[tables] deleg-ci cell 51/0.3/0.95/0.25
+[tables] deleg-ci cell 51/0.3/0.95/0.5
+[tables] deleg-ci cell 51/0.3/0.95/0.5
+[tables] deleg-ci cell 51/0.5/0.8/0.0
+[tables] deleg-ci cell 51/0.5/0.8/0.25
+[tables] deleg-ci cell 51/0.5/0.8/0.25
+[tables] deleg-ci cell 51/0.5/0.8/0.5
+[tables] deleg-ci cell 51/0.5/0.8/0.5
+[tables] deleg-ci cell 51/0.5/0.95/0.0
+[tables] deleg-ci cell 51/0.5/0.95/0.25
+[tables] deleg-ci cell 51/0.5/0.95/0.25
+[tables] deleg-ci cell 51/0.5/0.95/0.5
+[tables] deleg-ci cell 51/0.5/0.95/0.5
+[tables] deleg-ci cell 51/0.7/0.8/0.0
+[tables] deleg-ci cell 51/0.7/0.8/0.25
+[tables] deleg-ci cell 51/0.7/0.8/0.25
+[tables] deleg-ci cell 51/0.7/0.8/0.5
+[tables] deleg-ci cell 51/0.7/0.8/0.5
+[tables] deleg-ci cell 51/0.7/0.95/0.0
+[tables] deleg-ci cell 51/0.7/0.95/0.25
+[tables] deleg-ci cell 51/0.7/0.95/0.25
+[tables] deleg-ci cell 51/0.7/0.95/0.5
+[tables] deleg-ci cell 51/0.7/0.95/0.5
+[tables] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/tab9_delegation_ci.md (99 lines)
+--- OK: Job 5: CI tables
+=== Job 6: figures ===
+[figs] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/fig8_fragmentation.png
+[figs] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/fig9_capture.png
+[figs] wrote /home/robin/OneDrive/University and such/My Papers/Works in progress/commonchain/results/night5/fig10_verify_scaling.png
+--- OK: Job 6: figures
+=== Job 7: mlflow-lite log ===
+[mlflow-lite] start run b78a14b625cc (fragmentation-night5)
+[mlflow-lite] end run b78a14b625cc
+[mlflow-lite] start run 9665b29ba9b4 (capture-night5)
+[mlflow-lite] end run 9665b29ba9b4
+[mlflow-lite] start run 6080f342f7d8 (deleg-blocs-night5)
+[mlflow-lite] end run 6080f342f7d8
+[mlflow-lite] night-5 runs logged
+--- OK: Job 7: mlflow-lite log
+=== Job 8a: test gate ===
+........................................................................ [ 72%]
+...........................                                              [100%]
+99 passed in 25.29s
+--- OK: Job 8a: test gate
+=== Job 8b: lint gate ===
+All checks passed!
+--- OK: Job 8b: lint gate
+=== SUMMARY ===
+fragmentation cells: 9720
+  binary: minority_win=0.000 tie=0.000 satisfaction=0.272
+  plurality: minority_win=0.428 tie=0.247 satisfaction=0.357
+  approval: minority_win=0.499 tie=0.251 satisfaction=0.561
+capture cells: 2700; chain_ok: 2700/2700
+  hostile=0.3 turnout=0.2: capture_rate=0.000
+  hostile=0.34 turnout=0.2: capture_rate=0.333
+  hostile=0.4 turnout=0.2: capture_rate=1.000
+deleg-blocs cells: 1620
+  aligned=0.0: delta_pass=+0.037 fidelity=0.016
+  aligned=1.0: delta_pass=+0.080 fidelity=1.000
+verify bench: L=1000 -> 322.133us/block; L=25000 -> 266.644us/block; verify_block ~227.444us flat
+=== NIGHT RUN 5 COMPLETE 2026-10-17T07:02:29Z ===

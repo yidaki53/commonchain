@@ -1,0 +1,9 @@
+{"run_id": "b78a14b625cc", "key": "approval/minority_win", "value": 0.4991816049382713, "step": 0, "timestamp": 1792220521.2024724}
+{"run_id": "b78a14b625cc", "key": "approval/tie_rate", "value": 0.25108996913580295, "step": 0, "timestamp": 1792220521.204285}
+{"run_id": "b78a14b625cc", "key": "approval/pass_rate", "value": 0.4254104938271616, "step": 0, "timestamp": 1792220521.2049456}
+{"run_id": "b78a14b625cc", "key": "binary/minority_win", "value": 0.0, "step": 0, "timestamp": 1792220521.2168481}
+{"run_id": "b78a14b625cc", "key": "binary/tie_rate", "value": 0.0, "step": 0, "timestamp": 1792220521.2172196}
+{"run_id": "b78a14b625cc", "key": "binary/pass_rate", "value": 0.16706651234568182, "step": 0, "timestamp": 1792220521.2175002}
+{"run_id": "b78a14b625cc", "key": "plurality/minority_win", "value": 0.4278506481481479, "step": 0, "timestamp": 1792220521.2278244}
+{"run_id": "b78a14b625cc", "key": "plurality/tie_rate", "value": 0.24652216049382716, "step": 0, "timestamp": 1792220521.2281494}
+{"run_id": "b78a14b625cc", "key": "plurality/pass_rate", "value": 0.39391845679012616, "step": 0, "timestamp": 1792220521.2283854}

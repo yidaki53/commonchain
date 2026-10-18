@@ -1,0 +1,11 @@
+{
+  "run_id": "b78a14b625cc",
+  "name": "fragmentation-night5",
+  "started_at": 1792220521.181149,
+  "ended_at": 1792220521.2311177,
+  "status": "FINISHED",
+  "params": {
+    "n_cells": 9720,
+    "sweep": "fragmentation"
+  }
+}

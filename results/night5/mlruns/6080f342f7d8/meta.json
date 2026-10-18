@@ -1,0 +1,11 @@
+{
+  "run_id": "6080f342f7d8",
+  "name": "deleg-blocs-night5",
+  "started_at": 1792220521.2927988,
+  "ended_at": 1792220521.3062289,
+  "status": "FINISHED",
+  "params": {
+    "n_cells": 1620,
+    "sweep": "deleg_blocs"
+  }
+}

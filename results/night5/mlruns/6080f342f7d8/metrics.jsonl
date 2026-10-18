@@ -1,0 +1,6 @@
+{"run_id": "6080f342f7d8", "key": "aligned_0.0/delta_pass", "value": 0.036944444444444446, "step": 0, "timestamp": 1792220521.2974138}
+{"run_id": "6080f342f7d8", "key": "aligned_0.0/fidelity", "value": 0.015719444444444453, "step": 0, "timestamp": 1792220521.2979627}
+{"run_id": "6080f342f7d8", "key": "aligned_0.5/delta_pass", "value": 0.06111111111111111, "step": 0, "timestamp": 1792220521.3010368}
+{"run_id": "6080f342f7d8", "key": "aligned_0.5/fidelity", "value": 0.47782999999999987, "step": 0, "timestamp": 1792220521.3013391}
+{"run_id": "6080f342f7d8", "key": "aligned_1.0/delta_pass", "value": 0.08037037037037027, "step": 0, "timestamp": 1792220521.3043027}
+{"run_id": "6080f342f7d8", "key": "aligned_1.0/fidelity", "value": 1.0, "step": 0, "timestamp": 1792220521.304591}
