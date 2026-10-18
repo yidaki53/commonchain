@@ -66,6 +66,39 @@ docs/          architecture, playbook (chartering, jurisdictions, dissolution)
 `uv run python -m pytest tests/ -q --cov=commonchain` (76 tests, >=94%
 coverage) and `uv run ruff check commonchain sim analysis tests` (clean).
 
+## Codec Performance Optimizations (self-healing section)
+
+The codec layer (`commonchain/chain_coding/{gf256,lrc,fountain}.py`) was
+optimized in four tiers. Repair latency is already <1ms for all LRC configs;
+these optimizations matter at scale (MB+ blocks, high throughput).
+
+### Tier 1 — Pythonic quick wins (done, <1 hr, 2-5x)
+* `gf256.rs_encode_shards`: precompute `xj^i` powers once per evaluation point
+  instead of inside the per-byte loop (~30% savings on the O(n x length x k)
+  GF-mul hot path).
+* `lrc.lrc_encode_shards` / `lrc.lrc_decode_from_available`: replace byte-by-byte
+  XOR loops with `int.from_bytes` / `int.to_bytes` integer XOR for blocks
+  >= 64 bytes (~5-10x).
+* `fountain.fountain_encode_shards` / `fountain.fountain_decode_from_available`:
+  same `int.from_bytes` XOR for blocks >= 64 bytes (~5-10x).
+
+### Tier 2 — NumPy vectorization (done, existing dep, 10-50x)
+* `gf256`: lazy 256x256 GF(2^8) multiplication table (`_GF_MUL_TABLE` as uint8)
+  with `gf_mul_vec`/`gf_mul_mat_vec` vectorized accessors.
+* `gf256._rs_encode_shards_numpy`: stacks shards into a `(k, length)` array and
+  applies row operations to all byte positions simultaneously.
+* `lrc.lrc_encode_shards`: `np.bitwise_xor.reduce` for local parity on large blocks.
+
+### Tier 4 — Conditional CUDA (done, blocks >= 16 KiB only)
+* `gf256.CUDA_THRESHOLD = 16384`: large blocks dispatch to CuPy GPU path with
+  on-device GF table; smaller blocks stay pure-Python to avoid host<->device
+  transfer overhead. CuPy is an optional import with NumPy fallback — no new
+  hard dependency.
+
+### Deferred
+* Cython Tier 3 (build complexity not justified for current throughput).
+* Vectorized decode (encode hot path is the bottleneck; decode is already <1ms).
+
 ## Citation
 
 Any external data, method or figure reuse: cite it (see `README.md`
