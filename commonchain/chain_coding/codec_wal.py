@@ -6,8 +6,6 @@ chain.
 
 from __future__ import annotations
 
-from typing import Any
-
 
 def encode_wal(data: bytes, k: int, n: int) -> tuple[list[bytes], list[bytes]]:
     """Encode and return (shards, wal_entries). The WAL entries record

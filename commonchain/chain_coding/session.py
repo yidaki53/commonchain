@@ -9,14 +9,15 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
-from .codec import decode_block, encode_block
-from .codec_family import LRC, RepairToken, decode_block_v2, encode_block_v2, detect_family
-from .gf256 import rs_decode_from_available
+from .codec_family import (
+    LRC,
+    decode_block_v2,
+    detect_family,
+    encode_block_v2,
+)
 from .manifest import CodingManifest
-from .probe import decode_probe, probe_progress
-from .redundancy import distribute_shards, next_neighbor_targets
 
 
 @dataclass
@@ -97,7 +98,6 @@ class CodecSession:
         if not tokens:
             raise ValueError(f'no shards available for block {block_index}')
 
-        shard_len = len(tokens[0][1])
         available_list: list[bytes | None] = [None] * self.n
         for shard_index, shard_bytes in tokens:
             if 0 <= shard_index < self.n:

@@ -12,25 +12,27 @@ Run:
 
 from __future__ import annotations
 
-import itertools
 import json
 import random
 import sys
 import time
 from collections import defaultdict
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
-from commonchain.chain import Collective
-from commonchain.chain_coding import CodecSession, RepairResult, repair_glitch, decode_probe
-from commonchain.chain_coding.codec_family import LRC
-from commonchain.chain_coding.lrc import lrc_encode_shards, lrc_decode_from_available, _layout
-from commonchain.governance import Ballot, DecisionBlock, Proposal, evaluate
-from commonchain.models import Charter, Member
+from commonchain.chain import Collective  # noqa: E402
+from commonchain.chain_coding.codec_family import LRC  # noqa: E402
+from commonchain.chain_coding.lrc import (  # noqa: E402
+    _layout,
+    lrc_decode_from_available,
+    lrc_encode_shards,
+)
+from commonchain.governance import Ballot, DecisionBlock, Proposal, evaluate  # noqa: E402
+from commonchain.models import Charter, Member  # noqa: E402
 
 CODE_FAMILY = LRC
 KN_RATIOS = [(2, 3), (3, 5), (4, 8)]
@@ -185,7 +187,6 @@ def aggregate(results: list[TrialResult]) -> dict[str, Any]:
     n = len(results)
     recovery_rate = sum(1 for r in results if r.recovered) / n
     avg_progress = sum(r.progress for r in results) / n
-    avg_helpers = sum(r.helpers_available for r in results) / n
     avg_bw = sum(r.bandwidth_bytes for r in results) / n
     avg_time = sum(r.repair_time_s for r in results) / n
     full_recovery_helpers = [

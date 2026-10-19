@@ -5,7 +5,6 @@ to watch while helpers repair a missing block.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Iterable
 
 from .codec_family import ProgressReport
 

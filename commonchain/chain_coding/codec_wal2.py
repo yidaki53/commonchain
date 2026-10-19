@@ -5,8 +5,6 @@ WAL can be replayed to rebuild the shard without a full re-encode.
 
 from __future__ import annotations
 
-from typing import Any
-
 
 def encode_wal2(data: bytes, k: int, n: int) -> tuple[list[bytes], list[bytes]]:
     return [data[i:i+1] for i in range(k)], [b'' for _ in range(n - k)]

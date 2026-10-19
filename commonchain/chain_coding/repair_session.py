@@ -7,13 +7,10 @@ function-level `repair_glitch`.
 from __future__ import annotations
 
 from dataclasses import dataclass, field
-from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
-from .codec_family import REED_SOLOMON, RepairToken, detect_family
+from .codec_family import detect_family
 from .manifest import CodingManifest
-from .probe import decode_probe
-from .redundancy import distribute_shards, next_neighbor_targets
 from .session import CodecSession
 
 

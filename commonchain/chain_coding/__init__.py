@@ -10,15 +10,15 @@ runs on top of that immutable ledger in a post-recovery phase.
 
 from .codec import decode_block, encode_block
 from .codec_family import (
-    REED_SOLOMON,
     FOUNTAIN,
     LRC,
+    REED_SOLOMON,
     Codecs,
-    RepairToken,
     ProgressReport,
+    RepairToken,
+    decode_block_v2,
     detect_family,
     encode_block_v2,
-    decode_block_v2,
 )
 from .experiment_storage import ExperimentStore
 from .manifest import CodingManifest, load_manifest, save_manifest
@@ -29,9 +29,9 @@ from .redundancy import (
     ring_neighbors,
     ring_positions,
 )
+from .repair import RepairResult, repair_glitch
 from .session import CodecSession
 from .store import HelperStore
-from .repair import RepairResult, repair_glitch
 
 __version__ = '0.1.0'
 __all__ = [
@@ -57,5 +57,7 @@ __all__ = [
     'ring_positions',
     'next_neighbor_targets',
     'repair_glitch',
+    'load_manifest',
+    'save_manifest',
     'ExperimentStore',
 ]

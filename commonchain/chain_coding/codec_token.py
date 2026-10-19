@@ -6,8 +6,6 @@ without re-reading the whole block from disk.
 
 from __future__ import annotations
 
-from typing import Any
-
 
 def encode_tokens(data: bytes, k: int, n: int) -> list[bytes]:
     """Encode a token stream: each stream item is a token for one shard.

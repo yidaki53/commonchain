@@ -7,10 +7,6 @@ neighbours rather than from a global solve over k points.
 
 from __future__ import annotations
 
-from typing import Any
-
-from .codec_family import REED_SOLOMON
-
 
 def decode_natural(blob: bytes, k: int, n: int) -> bytes:
     """Natural decode.

@@ -7,8 +7,6 @@ still the Vandermonde/ECM solve from the codec module.
 
 from __future__ import annotations
 
-from typing import Any
-
 
 def encode_vigenere(data: bytes, block_index: int, helper_index: int, k: int, n: int) -> list[bytes]:
     """Encode with a Vigenère-style shift.

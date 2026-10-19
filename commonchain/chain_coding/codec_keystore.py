@@ -5,8 +5,6 @@ the manifest, and the manifest stays small enough for night-5 grid runs.
 
 from __future__ import annotations
 
-from typing import Any
-
 
 def encode_with_keystore(data: bytes, k: int, n: int) -> list[bytes]:
     """Encode a block into the keystore (collection 'shards').

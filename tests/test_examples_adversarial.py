@@ -25,30 +25,22 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import pytest
 
-from commonchain.chain import Collective, GovernanceError
-from commonchain.chain_coding import (
-    REED_SOLOMON,
-    FOUNTAIN,
-    LRC,
-    encode_block_v2,
-    decode_block_v2,
-)
+from commonchain.chain import Collective
 from commonchain.chain_coding.fountain import (
-    fountain_encode_shards,
     fountain_decode_from_available,
+    fountain_encode_shards,
 )
 from commonchain.chain_coding.gf256 import (
-    rs_encode_shards,
     rs_decode_from_available,
+    rs_encode_shards,
 )
 from commonchain.chain_coding.lrc import (
-    lrc_encode_shards,
     lrc_decode_from_available,
+    lrc_encode_shards,
 )
-from commonchain.governance import Ballot, Proposal, evaluate
+from commonchain.governance import Ballot
 from commonchain.models import Charter, Member
 from commonchain.modules import payroll
-
 
 # --------------------------------------------------------------------------- #
 # Fixtures                                                                    #
@@ -417,7 +409,6 @@ def test_byzantine_helper_wrong_shard_index() -> None:
 def test_all_helpers_offline_no_crash() -> None:
     """Zero shards available -> graceful degradation, no crash."""
     for k, n in [(3, 5), (4, 8), (5, 10)]:
-        data = _rs_data(k=k, length=64)
         try:
             rs_decode_from_available({}, k=k, n=n)
         except (ValueError, IndexError):

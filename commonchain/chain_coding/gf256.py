@@ -212,14 +212,15 @@ def rs_encode_shards(data_shards: list[bytes], n: int, k: int) -> list[bytes]:
     return [bytes(s) for s in shards]
 
 
-def rs_decode_from_available(
+def _rs_decode_from_available_python(
     available: dict[int, bytes], k: int, n: int
 ) -> list[bytes]:
-    """Reconstruct k coefficient shards from any k available evaluation shards.
+    """Pure-Python RS decode: per-byte Gauss-Jordan on the Vandermonde system.
 
     ``available`` maps shard_index -> shard bytes (evaluations at xi[idx]).
-    Uses Gauss-Jordan elimination over GF(2^8) to solve the Vandermonde
-    system and recover the k data coefficients.
+    Reconstructs the k data coefficients. Kept as the reference
+    implementation for small blocks; large blocks go through
+    ``_rs_decode_from_available_numpy``.
     """
     if len(available) < k:
         raise ValueError(f"need at least {k} shards, got {len(available)}")
@@ -352,48 +353,7 @@ def rs_decode_from_available(
     if length >= 4096:
         return _rs_decode_from_available_numpy(available, k, n)
 
-    xi = _eval_points(n)
-    indices = sorted(available.keys())[:k]
-
-    data_shards: list[bytearray] = [bytearray(length) for _ in range(k)]
-
-    for b in range(length):
-        mat: list[list[int]] = []
-        for t, idx in enumerate(indices):
-            x = xi[idx]
-            row = []
-            xp = 1
-            for i in range(k):
-                row.append(xp)
-                xp = gf_mul(xp, x)
-            row.append(available[idx][b])
-            mat.append(row)
-
-        for col in range(k):
-            pivot_row = None
-            for r in range(col, k):
-                if mat[r][col] != 0:
-                    pivot_row = r
-                    break
-            if pivot_row is None:
-                raise ValueError(f"singular Vandermonde matrix at byte {b}")
-
-            mat[col], mat[pivot_row] = mat[pivot_row], mat[col]
-
-            inv = gf_inv(mat[col][col])
-            for j in range(col, k + 1):
-                mat[col][j] = gf_mul(mat[col][j], inv)
-
-            for r in range(k):
-                if r != col and mat[r][col] != 0:
-                    factor = mat[r][col]
-                    for j in range(col, k + 1):
-                        mat[r][j] ^= gf_mul(factor, mat[col][j])
-
-        for i in range(k):
-            data_shards[i][b] = mat[i][k]
-
-    return [bytes(s) for s in data_shards]
+    return _rs_decode_from_available_python(available, k, n)
 
 
 def rs_solve_partial(

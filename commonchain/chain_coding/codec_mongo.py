@@ -6,10 +6,6 @@ still out of the hot path because this module is only the storage driver.
 
 from __future__ import annotations
 
-from typing import Any
-
-from .codec_family import LRC
-
 
 def encode_with_mongo(data: bytes, k: int, n: int) -> list[bytes]:
     """Encode a block into a local MongoDB store (collection 'blocks').

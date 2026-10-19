@@ -63,8 +63,17 @@ docs/          architecture, playbook (chartering, jurisdictions, dissolution)
 
 ## Testing gate (must be green before reporting done)
 
-`uv run python -m pytest tests/ -q --cov=commonchain` (76 tests, >=94%
-coverage) and `uv run ruff check commonchain sim analysis tests` (clean).
+`uv run python -m pytest tests/ -q` (124 tests, all green) and
+`uv run ruff check commonchain sim analysis tests` (clean).
+
+The nightly unsupervised suite is `uv run python nightly_runner.py`: it runs
+the full pytest suite plus the three example scenarios end-to-end
+(`examples/{robotic_laws,national_government,worker_coop_retail}/run_example.py`)
+and exits non-zero on any stage failure. The adversarial edge-case tests
+live in `tests/test_examples_adversarial.py` (25 tests: Three Laws amendment
+attacks, Byzantine/double/non-member voting, quorum and tie handling,
+soulbound stake transfer, double-spend, chain tampering, empty proposals,
+RS/Fountain/LRC codec edge cases, all-helpers-offline).
 
 ## Codec Performance Optimizations (self-healing section)
 
@@ -87,6 +96,9 @@ these optimizations matter at scale (MB+ blocks, high throughput).
   with `gf_mul_vec`/`gf_mul_mat_vec` vectorized accessors.
 * `gf256._rs_encode_shards_numpy`: stacks shards into a `(k, length)` array and
   applies row operations to all byte positions simultaneously.
+* `gf256._rs_decode_from_available_numpy`: vectorized Gauss-Jordan decode for
+  blocks >= 4 KiB — inverts the (k x k) Vandermonde matrix once, then applies
+  it to the stacked evaluation tensor with the GF table.
 * `lrc.lrc_encode_shards`: `np.bitwise_xor.reduce` for local parity on large blocks.
 
 ### Tier 4 — Conditional CUDA (done, blocks >= 16 KiB only)
@@ -97,7 +109,21 @@ these optimizations matter at scale (MB+ blocks, high throughput).
 
 ### Deferred
 * Cython Tier 3 (build complexity not justified for current throughput).
-* Vectorized decode (encode hot path is the bottleneck; decode is already <1ms).
+
+### Pitfalls (learned the hard way)
+* `fountain`: the encoder derives each shard's degree and source set with
+  `Random(seed + j)` per shard index j — the peeling decoder replays exactly
+  this. If you change one side's RNG scheme, decode silently returns garbage
+  (peeling "succeeds" on wrong source sets) instead of failing loudly. Always
+  keep encode/decode replay in lockstep.
+* `payroll` parameter validation happens at payout time
+  (`payroll.require_enabled`, raises `PayrollError`), NOT at
+  `Charter.model_validate` — `Charter.modules` is a free-form dict. Test
+  validation through `payroll.distribute`, not charter construction.
+* `supermajority_pct` is the threshold for `kind="charter_amendment"`
+  proposals (`evaluate` selects it from the charter); a 2/3 vote passes a
+  66% threshold but fails a 75% one — set the fixture threshold to match
+  the intent of each test.
 
 ## Citation
 

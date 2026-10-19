@@ -47,7 +47,6 @@ def decode_probe(
         )
 
     # Build available_shards list of length n with None for missing shards
-    shard_len = len(tokens[0][1])
     available_shards: list[bytes | None] = [None] * n
     for shard_index, shard_bytes in tokens:
         if 0 <= shard_index < n:

@@ -20,7 +20,6 @@ Performance notes
 from __future__ import annotations
 
 import random
-from typing import Iterable
 
 
 def _ideal_soliton_distribution(k: int) -> list[float]:

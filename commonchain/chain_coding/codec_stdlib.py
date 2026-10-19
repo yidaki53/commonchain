@@ -6,10 +6,6 @@ process demands an optional extra.
 
 from __future__ import annotations
 
-from typing import Any
-
-from .codec_family import LRC, REED_SOLOMON
-
 
 def encode_block(data: bytes, k: int, n: int) -> list[bytes]:
     """Stdlib fallback.

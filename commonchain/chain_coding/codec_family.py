@@ -30,9 +30,6 @@ from __future__ import annotations
 
 import hashlib
 from dataclasses import dataclass
-from typing import Iterable
-
-from .codec import decode_block, encode_block
 
 # Export the candidate families for the survey notes and experiments.
 REED_SOLOMON = 'reed-solomon'

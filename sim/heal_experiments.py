@@ -20,7 +20,6 @@ from __future__ import annotations
 import itertools
 import json
 import math
-import os
 import random
 import shutil
 import sys
@@ -35,10 +34,10 @@ from commonchain.chain import Collective
 from commonchain.chain_coding import (
     CodecSession,
     RepairResult,
-    repair_glitch,
     decode_probe,
+    repair_glitch,
 )
-from commonchain.chain_coding.codec_family import LRC, REED_SOLOMON, FOUNTAIN
+from commonchain.chain_coding.codec_family import FOUNTAIN, LRC, REED_SOLOMON
 from commonchain.governance import Ballot, DecisionBlock, Proposal, evaluate
 from commonchain.models import Charter, Member
 
@@ -233,7 +232,7 @@ def run_experiment(config: ExperimentConfig) -> list[TrialResult]:
     session = setup_codec(col, all_helpers, config.k, config.n, config.code_family, root)
 
     for i in range(config.n_blocks):
-        block = decide_block(col, members, i)
+        decide_block(col, members, i)
         # decide_block -> col._append already calls session.record_block,
         # so the block is already in the manifest. Do not double-record.
 

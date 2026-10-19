@@ -9,8 +9,6 @@ small enough for night-5 grid runs.
 
 from __future__ import annotations
 
-from typing import Iterable
-
 
 def ring_positions(n_shards: int, m: int) -> list[int]:
     """Ring position of each shard when the helpers are arranged in a ring

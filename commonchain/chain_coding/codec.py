@@ -10,7 +10,6 @@ the same block-level interface.
 from __future__ import annotations
 
 import numpy as np
-from numpy.polynomial import polynomial as L
 
 # Vandermonde row lengths: k - 1 .. 254, enough for any practical block set.
 VANDER_LENGTHS = range(2, 255)
