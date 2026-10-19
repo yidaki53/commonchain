@@ -269,6 +269,133 @@ def rs_decode_from_available(
     return [bytes(s) for s in data_shards]
 
 
+def _rs_decode_from_available_numpy(
+    available: dict[int, bytes], k: int, n: int
+) -> list[bytes]:
+    """Vectorized RS decode: Gauss-Jordan on the scalar Vandermonde matrix,
+    then apply the inverse to all byte positions simultaneously via NumPy.
+
+    Instead of running per-byte Gauss-Jordan (O(length * k^2) Python ops),
+    we invert the (k x k) Vandermonde matrix once and multiply it against
+    the stacked (k, length) evaluation tensor using GF(2^8) vectorized ops.
+    """
+    if len(available) < k:
+        raise ValueError(f"need at least {k} shards, got {len(available)}")
+
+    xi = _eval_points(n)
+    indices = sorted(available.keys())[:k]
+    length = len(available[indices[0]])
+
+    # Build Vandermonde matrix V[i][j] = xi[indices[i]]^j  (k x k)
+    V = np.zeros((k, k), dtype=np.uint8)
+    for i, idx in enumerate(indices):
+        x = xi[idx]
+        xp = 1
+        for j in range(k):
+            V[i, j] = xp
+            xp = gf_mul(xp, x)
+
+    # Gauss-Jordan invert V: augment with identity [V | I] -> [I | V^-1]
+    table = _ensure_gf_table()
+    aug = np.concatenate([V, np.eye(k, dtype=np.uint8)], axis=1)
+    for col in range(k):
+        pivot_row = None
+        for r in range(col, k):
+            if aug[r, col] != 0:
+                pivot_row = r
+                break
+        if pivot_row is None:
+            raise ValueError("singular Vandermonde matrix")
+        if pivot_row != col:
+            aug[[col, pivot_row]] = aug[[pivot_row, col]]
+        inv = gf_inv(int(aug[col, col]))
+        aug[col] = table[aug[col], inv]
+        for r in range(k):
+            if r != col and aug[r, col] != 0:
+                factor = int(aug[r, col])
+                aug[r] = aug[r] ^ table[aug[col], factor]
+
+    V_inv = aug[:, k:]
+
+    # Stack evaluations into (k, length): y[i, b] = available[indices[i]][b]
+    y = np.zeros((k, length), dtype=np.uint8)
+    for i, idx in enumerate(indices):
+        y[i] = np.frombuffer(available[idx], dtype=np.uint8)
+
+    # c = V_inv @ y over GF(2^8): c[i] = XOR_j gf_mul_vec(y[j], V_inv[i,j])
+    c = np.zeros((k, length), dtype=np.uint8)
+    for i in range(k):
+        for j in range(k):
+            coeff = int(V_inv[i, j])
+            if coeff != 0:
+                c[i] ^= table[y[j], coeff]
+
+    return [c[i].tobytes() for i in range(k)]
+
+
+def rs_decode_from_available(
+    available: dict[int, bytes], k: int, n: int
+) -> list[bytes]:
+    """Reconstruct k coefficient shards from any k available evaluation shards.
+
+    ``available`` maps shard_index -> shard bytes (evaluations at xi[idx]).
+    Uses Gauss-Jordan elimination over GF(2^8) to solve the Vandermonde
+    system and recover the k data coefficients.
+
+    For blocks >= 4 KiB, dispatches to a NumPy-vectorized path that inverts
+    the Vandermonde matrix once and applies it to all byte positions at once.
+    """
+    if len(available) < k:
+        raise ValueError(f"need at least {k} shards, got {len(available)}")
+
+    length = len(next(iter(available.values())))
+    if length >= 4096:
+        return _rs_decode_from_available_numpy(available, k, n)
+
+    xi = _eval_points(n)
+    indices = sorted(available.keys())[:k]
+
+    data_shards: list[bytearray] = [bytearray(length) for _ in range(k)]
+
+    for b in range(length):
+        mat: list[list[int]] = []
+        for t, idx in enumerate(indices):
+            x = xi[idx]
+            row = []
+            xp = 1
+            for i in range(k):
+                row.append(xp)
+                xp = gf_mul(xp, x)
+            row.append(available[idx][b])
+            mat.append(row)
+
+        for col in range(k):
+            pivot_row = None
+            for r in range(col, k):
+                if mat[r][col] != 0:
+                    pivot_row = r
+                    break
+            if pivot_row is None:
+                raise ValueError(f"singular Vandermonde matrix at byte {b}")
+
+            mat[col], mat[pivot_row] = mat[pivot_row], mat[col]
+
+            inv = gf_inv(mat[col][col])
+            for j in range(col, k + 1):
+                mat[col][j] = gf_mul(mat[col][j], inv)
+
+            for r in range(k):
+                if r != col and mat[r][col] != 0:
+                    factor = mat[r][col]
+                    for j in range(col, k + 1):
+                        mat[r][j] ^= gf_mul(factor, mat[col][j])
+
+        for i in range(k):
+            data_shards[i][b] = mat[i][k]
+
+    return [bytes(s) for s in data_shards]
+
+
 def rs_solve_partial(
     known_coeffs: dict[int, bytes],
     evals: dict[int, bytes],

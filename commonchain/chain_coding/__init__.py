@@ -11,6 +11,8 @@ runs on top of that immutable ledger in a post-recovery phase.
 from .codec import decode_block, encode_block
 from .codec_family import (
     REED_SOLOMON,
+    FOUNTAIN,
+    LRC,
     Codecs,
     RepairToken,
     ProgressReport,
@@ -41,6 +43,8 @@ __all__ = [
     'RepairToken',
     'ProgressReport',
     'REED_SOLOMON',
+    'FOUNTAIN',
+    'LRC',
     'detect_family',
     'encode_block',
     'encode_block_v2',

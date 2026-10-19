@@ -13,6 +13,7 @@ from typing import Any, Iterable
 
 from .codec import decode_block, encode_block
 from .codec_family import LRC, RepairToken, decode_block_v2, encode_block_v2, detect_family
+from .gf256 import rs_decode_from_available
 from .manifest import CodingManifest
 from .probe import decode_probe, probe_progress
 from .redundancy import distribute_shards, next_neighbor_targets
@@ -79,9 +80,11 @@ class CodecSession:
         self.manifest.write()
 
     def decode_block(self, block_index: int) -> bytes:
-        """Decode a block from the helper pool. If helpers respond, the
-        progressive probe updates the estimate. This is the entry point the
-        repair routine calls; the decoder itself is the Vandermonde solve.
+        """Decode a block from the helper pool using all available shards.
+
+        Collects shards from the manifest, runs the family-specific decode,
+        and returns the concatenated recovered data. Raises ``ValueError`` if
+        fewer than ``k`` shards are available (cannot recover).
         """
         tokens: list[tuple[int, bytes]] = []
         manifest = self.manifest
@@ -90,11 +93,25 @@ class CodecSession:
         for e in manifest.entries:
             if e.get('block_index') == block_index:
                 tokens.append((e.get('shard_index', 0), bytes.fromhex(e['shard'])))
-        report = decode_probe(block_index, self.k, self.n, self.family, tokens)
-        if report.progress >= 1.0 and report.checksum == '0' * 64:
-            # Exact decode only after the progress gate.
-            raise NotImplementedError('exact decode requires a full k-token set')
-        return b''
+
+        if not tokens:
+            raise ValueError(f'no shards available for block {block_index}')
+
+        shard_len = len(tokens[0][1])
+        available_list: list[bytes | None] = [None] * self.n
+        for shard_index, shard_bytes in tokens:
+            if 0 <= shard_index < self.n:
+                available_list[shard_index] = shard_bytes
+
+        recovered, progress = decode_block_v2(
+            available_list, self.k, self.n, self.family
+        )
+        if progress < 1.0:
+            raise ValueError(
+                f'decode incomplete for block {block_index}: '
+                f'progress {progress:.2f} < 1.0'
+            )
+        return b''.join(recovered)
 
     def redeem_shard(self, block_index: int, shard_index: int) -> bytes:
         """Redeem one transformed shard (parity or data) for a block index.

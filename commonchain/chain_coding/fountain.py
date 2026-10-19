@@ -62,10 +62,13 @@ def fountain_encode_shards(
         if len(s) != length:
             raise ValueError("all data shards must have the same length")
 
-    rng = random.Random(seed if seed is not None else 42)
+    base_seed = seed if seed is not None else 42
     shards: list[bytearray] = [bytearray(length) for _ in range(n)]
 
     for j in range(n):
+        # Per-shard rng: the decoder replays choices with
+        # Random(base_seed + j), so encoding must derive them the same way.
+        rng = random.Random(base_seed + j)
         d = _sample_degree(k, rng)
         source_indices = rng.sample(range(k), d)
         # Tier 1: int.from_bytes XOR for blocks >= 64 bytes.

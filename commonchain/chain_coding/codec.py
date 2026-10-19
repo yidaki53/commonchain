@@ -82,15 +82,32 @@ def encode_block(data: bytes, k: int, n: int) -> list[bytes]:
 def decode_block(blob: bytes, k: int, n: int) -> bytes:
     """Decode a parity-only blob into its k data shards.
 
-    This is a thin wrapper: a real refinery must re-solve the Vandermonde
-    system with the k data values and take the coefficient of degree zero.
-    We keep the implementation honest by raising NotImplementedError so no
-    night run silently reports a reconstructed block it has not verified.
+    ``blob`` is the concatenation of at least ``k`` encoded shards laid out
+    contiguously (each shard ``len(blob) // n`` bytes). Splits into shards,
+    then delegates to ``decode_block_v2`` for the family-specific algebra.
+
+    Returns the first recovered data shard (shard index 0). For full data
+    recovery across all k shards use ``session.decode_block`` / ``decode_block_v2``
+    directly with a dict of available shards.
     """
     if k < 2 or n < k:
         raise ValueError('invalid k/n')
-    raise NotImplementedError(
-        'decode_block is intentionally unimplemented; the coding layer can '
-        'only encode shards. Use the shard redemption path (codec_family + '
-        'chain) -- that is which one we have the right algebra for.'
-    )
+    shard_len = len(blob) // n
+    if shard_len == 0:
+        raise ValueError('blob too short for k shards')
+
+    available: dict[int, bytes] = {}
+    for i in range(min(k, n)):
+        chunk = blob[i * shard_len:(i + 1) * shard_len]
+        if len(chunk) == shard_len:
+            available[i] = chunk
+    if len(available) < k:
+        raise ValueError(f'needs at least {k} shards, got {len(available)}')
+
+    from .codec_family import decode_block_v2
+
+    available_list = [available.get(i) for i in range(n)]
+    recovered, progress = decode_block_v2(available_list, k, n, 'lrc')
+    if progress < 1.0:
+        raise ValueError(f'decode incomplete: progress {progress:.2f} < 1.0')
+    return bytes(recovered[0])
