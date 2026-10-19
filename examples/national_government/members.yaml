@@ -1,0 +1,30 @@
+- address: "0xcitizen1"
+  display_name: "Amara Nkosi"
+  metrics:
+    labor_hours: 0.0
+    district_code: 1.0
+  active: true
+- address: "0xcitizen2"
+  display_name: "Carlos Mendez"
+  metrics:
+    labor_hours: 0.0
+    district_code: 2.0
+  active: true
+- address: "0xcitizen3"
+  display_name: "Dimitri Volkov"
+  metrics:
+    labor_hours: 0.0
+    district_code: 3.0
+  active: true
+- address: "0xcitizen4"
+  display_name: "Fatima Al-Rashid"
+  metrics:
+    labor_hours: 0.0
+    district_code: 1.0
+  active: true
+- address: "0xcitizen5"
+  display_name: "Hans Weber"
+  metrics:
+    labor_hours: 0.0
+    district_code: 2.0
+  active: true

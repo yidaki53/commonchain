@@ -1,0 +1,28 @@
+- address: "0xworker1"
+  display_name: "Aisha Johnson"
+  metrics:
+    labor_hours: 160.0
+    store_code: 1.0
+    role_code: 1.0
+  active: true
+- address: "0xworker2"
+  display_name: "Ben Liu"
+  metrics:
+    labor_hours: 160.0
+    store_code: 1.0
+    role_code: 2.0
+  active: true
+- address: "0xworker3"
+  display_name: "Carmen Ruiz"
+  metrics:
+    labor_hours: 160.0
+    store_code: 2.0
+    role_code: 3.0
+  active: true
+- address: "0xworker4"
+  display_name: "Derek O'Sullivan"
+  metrics:
+    labor_hours: 160.0
+    store_code: 2.0
+    role_code: 1.0
+  active: true

@@ -1,0 +1,18 @@
+- address: "0xa11ce"
+  display_name: "Dr. Elena Vasquez"
+  metrics:
+    labor_hours: 40.0
+    role_code: 1.0
+  active: true
+- address: "0xb0t"
+  display_name: "Dr. Marcus Chen"
+  metrics:
+    labor_hours: 40.0
+    role_code: 2.0
+  active: true
+- address: "0xc3po"
+  display_name: "Dr. Sarah Okafor"
+  metrics:
+    labor_hours: 40.0
+    role_code: 3.0
+  active: true

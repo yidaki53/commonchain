@@ -1,0 +1,21 @@
+name: "Asimov AI Collective"
+mission: >
+  AI systems serving humanity under the Three Laws of Robotics as an
+  immutable constitutional core. No decision may override Law 1
+  (protect humanity), Law 2 (obey human orders unless conflicting with
+  Law 1), or Law 3 (protect self-existence unless conflicting with Laws
+  1 and 2).
+kind: coop
+one_member_one_vote: true
+stakes_transferable: false
+quorum_pct: 60.0
+pass_pct: 60.0
+supermajority_pct: 75.0
+voting_rule: binary
+jurisdiction_module: generic
+modules:
+  ai_safety:
+    law1_protected: true
+    law2_protected: true
+    law3_protected: true
+    amendment_lock: ["one_member_one_vote", "stakes_transferable", "ai_safety.law1_protected"]

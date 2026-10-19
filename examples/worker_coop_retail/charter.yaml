@@ -1,0 +1,20 @@
+name: "Red Rose Worker Co-op Retail"
+mission: >
+  Worker-owned cooperative retail chain. Every store decision -- hours,
+  pricing, sourcing, profit distribution -- is made by the workers who
+  do the work, one worker one vote, recorded on-chain.
+kind: coop
+one_member_one_vote: true
+stakes_transferable: false
+quorum_pct: 50.0
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: binary
+jurisdiction_module: generic
+modules:
+  payroll:
+    policy: "equal"
+    stable_base_share: 0.5
+  profit_sharing:
+    cycle: "quarterly"
+    worker_share_pct: 80.0

@@ -1,0 +1,20 @@
+name: "Commonwealth Republic"
+mission: >
+  A nation governed by its citizens through vote-gated, hash-linked
+  decision blocks. Every law, budget, and appointment requires the
+  consent of the governed, recorded immutably on-chain.
+kind: party
+one_member_one_vote: true
+stakes_transferable: false
+quorum_pct: 50.0
+pass_pct: 50.0
+supermajority_pct: 66.0
+voting_rule: approval
+jurisdiction_module: generic
+modules:
+  payroll:
+    policy: "civil_service"
+    stable_base_share: 0.6
+  delegation:
+    enabled: true
+    max_delegatees: 5
